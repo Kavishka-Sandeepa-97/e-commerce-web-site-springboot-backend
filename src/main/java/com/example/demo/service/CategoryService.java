@@ -9,5 +9,6 @@ public interface CategoryService {
     List<Category> getAllCategory();
     Category addCategory(Category category);
     Category updateCategory(Category category);
+    Category getCategoryById(Long id);
 
 }

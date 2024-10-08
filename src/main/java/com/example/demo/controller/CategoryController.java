@@ -3,8 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Category;
 import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,4 +17,19 @@ public class CategoryController {
     public List<Category> getAllCategories() {
         return categoryService.getAllCategory();
     }
+
+    @GetMapping("/getCategoryById/{id}")
+    public Category getCategoryById(@PathVariable Long id) {
+        return categoryService.getCategoryById(id);
+    }
+    @PostMapping("/createCategory")
+    public Category createCategory(@RequestBody Category category) {
+        return categoryService.addCategory(category);
+    }
+    @PostMapping("updatecategory")
+    public Category updateCategory(@RequestBody Category category) {
+        return categoryService.updateCategory(category);
+    }
+
+
 }
