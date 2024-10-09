@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.ProductDto;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
@@ -13,6 +15,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public List<Product> getAllProduct() {
@@ -35,8 +39,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product addProduct(Product product) {
-       return productRepository.save(product);
+    public Product addProduct(ProductDto productDto){
+        Category category= categoryRepository.findById(productDto.getCategoryId()).orElse(null);
+        if (category == null){
+            return null;
+        }else {
+            Product product = new Product();
+            product.setProductName(productDto.getProductName());
+            product.setPrice(productDto.getPrice());
+            product.setQty(productDto.getPrice());
+            product.setCategory(category);
+            return productRepository.save(product);
+        }
     }
 
     @Override
