@@ -61,4 +61,10 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
     }
+
+    @Override
+    public List<Product> getProductByCategory(Category category) {
+        return productRepository.findProductByCategory(category);
+    }
+
 }

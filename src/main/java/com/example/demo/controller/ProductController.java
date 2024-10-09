@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ProductDto;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.status(HttpStatus.OK).body(product);
+    }
+    @GetMapping("productByCategory")
+    public ResponseEntity<List<Product>> getProductByCategory(@RequestBody Category category){
+       return ResponseEntity.status(HttpStatus.OK).body( productService.getProductByCategory(category));
     }
 
 }
