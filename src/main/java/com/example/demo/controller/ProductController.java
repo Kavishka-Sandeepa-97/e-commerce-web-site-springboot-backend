@@ -45,7 +45,7 @@ public class ProductController {
     @GetMapping("productByCategory")
     public ResponseEntity<?> getProductByCategory(@RequestBody Category category){
         if (productService.getProductByCategory(category).isEmpty()){
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found for id="+category.getId());
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found for id"+category.getId());
         }else {
             return ResponseEntity.status(HttpStatus.OK).body(productService.getProductByCategory(category));
         }
