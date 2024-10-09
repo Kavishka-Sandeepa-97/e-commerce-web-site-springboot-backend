@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.ProductDto;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +20,10 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<?> saveProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<?> saveProduct(@RequestBody Product product){
          try {
-           return ResponseEntity.status(HttpStatus.CREATED).body(  productService.addProduct(productDto));
+           return ResponseEntity.status(HttpStatus.CREATED).body(  productService.addProduct(product));
          }catch (Exception e){
-             e.printStackTrace();
              return new ResponseEntity<>("Bad Request", HttpStatus.BAD_REQUEST);
          }
     }
