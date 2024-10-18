@@ -45,9 +45,9 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }else {
             Product product = new Product();
-            product.setProductName(productDto.getProduvtName());
+            product.setProductName(productDto.getProductName());
             product.setPrice(productDto.getPrice());
-            product.setQty(productDto.getPrice());
+            product.setQty(productDto.getQty());
             product.setCategory(category);
             return productRepository.save(product);
         }

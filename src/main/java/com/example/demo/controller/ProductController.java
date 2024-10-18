@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")//("localhost:5127")
 public class ProductController {
     @Autowired
     private  ProductService productService;
