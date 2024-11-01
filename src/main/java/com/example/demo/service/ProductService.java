@@ -13,6 +13,6 @@ public interface ProductService {
    boolean deleteProductById(Long id);
    Product addProduct(ProductDto productDto);
    Product updateProduct(Product product);
-   List<Product> getProductByCategory(Category category);
+   List<Product> getProductByCategory(Long id);
 
 }

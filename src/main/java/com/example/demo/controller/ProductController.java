@@ -43,12 +43,12 @@ public class ProductController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
-    @GetMapping("productByCategory")
-    public ResponseEntity<?> getProductByCategory(@RequestBody Category category){
-        if (productService.getProductByCategory(category).isEmpty()){
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found for id"+category.getId());
+    @GetMapping("productByCategory/{id}")
+    public ResponseEntity<?> getProductByCategory(@PathVariable Long id){
+        if (productService.getProductByCategory(id).isEmpty()){
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found for id "+id);
         }else {
-            return ResponseEntity.status(HttpStatus.OK).body(productService.getProductByCategory(category));
+            return ResponseEntity.status(HttpStatus.OK).body(productService.getProductByCategory(id));
         }
 
     }
