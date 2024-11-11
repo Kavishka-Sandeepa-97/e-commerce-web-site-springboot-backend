@@ -28,6 +28,7 @@ public class Product {
     @JoinColumn(nullable = false,name="category_idx")
     private  Category category;
 
+
     @ManyToMany(mappedBy = "products")
     private Set<Orders> orders=new HashSet<>();
 

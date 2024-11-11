@@ -21,6 +21,4 @@ public class Category {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category",fetch = FetchType.LAZY)
     private List<Product> products;
-
-    
 }

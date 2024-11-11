@@ -35,6 +35,7 @@ public class ProductController {
     public Product updateProduct(@RequestBody Product product){
         return productService.updateProduct(product);
     }
+
     @GetMapping("/getProductById/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id){
         Product product= productService.getProductById(id);
@@ -43,6 +44,7 @@ public class ProductController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
+
     @GetMapping("productByCategory/{id}")
     public ResponseEntity<?> getProductByCategory(@PathVariable Long id){
         if (productService.getProductByCategory(id).isEmpty()){

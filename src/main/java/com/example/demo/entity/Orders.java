@@ -17,10 +17,9 @@ public class Orders {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dateTime;
 
-    private Double tax;
     private Double total;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "order_product",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name="product_id"))
